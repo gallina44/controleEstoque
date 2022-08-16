@@ -5,6 +5,9 @@
  */
 package Telas;
 
+import Classes.Usuario;
+import Implementacao.UsuarioImpl;
+
 /**
  *
  * @author Aluno
@@ -53,6 +56,11 @@ public class TelaLogin extends javax.swing.JFrame {
         txtSenha2.setBounds(20, 160, 140, 20);
 
         bntEntrar.setText("Enviar");
+        bntEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bntEntrarActionPerformed(evt);
+            }
+        });
         jPanel1.add(bntEntrar);
         bntEntrar.setBounds(20, 220, 100, 40);
 
@@ -96,6 +104,19 @@ public class TelaLogin extends javax.swing.JFrame {
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_bntSairActionPerformed
+
+    private void bntEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntEntrarActionPerformed
+        // TODO add your handling code here:
+        Usuario usuario = new Usuario();
+        UsuarioImpl usuarioimpl = new UsuarioImpl();
+        usuario.setLogin(txtLogin.getText());
+        usuario.setSenha(txtSenha2.getText());
+        if(usuarioimpl.verificaLogin(usuario)){
+            Menu menu = new Menu();
+            menu.setVisible(true);
+            dispose();
+        }
+    }//GEN-LAST:event_bntEntrarActionPerformed
 
     /**
      * @param args the command line arguments
